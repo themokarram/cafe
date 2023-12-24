@@ -1,0 +1,57 @@
+.mainfooter{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30vh;
+    background-color: rgb(26, 6, 6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+
+    >.logo{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        >img{
+            overflow: hidden;
+            white-space: nowrap;
+            width: 200px;
+            height: 200px;
+            margin-top: 30px;
+            margin-left: 20px;
+            object-fit: cover;
+           
+           
+        }
+        >h5{
+           float: right;
+           color:white;
+           margin-left: 50px;
+           margin-top: 180px;
+            z-index: 2;
+            position:absolute;
+        }
+    }
+    >.moko{
+        color: white;
+        >h5{
+            margin-left: 20px;
+        }
+    }
+    >.follow{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: white;
+        >a{
+            text-decoration: none;
+            color: white;
+            margin: 3px;
+        }
+    }
+}

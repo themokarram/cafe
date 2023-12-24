@@ -1,0 +1,202 @@
+
+[
+    {
+        "id":1,
+        "title":"Chicken biryani",
+        "price":160,
+        "image":"./nvb.jpg",
+        "category":"non-veg"
+
+
+    },
+
+    {
+        "id":2,
+        "title":"Chicken lollypop",
+        "price":80,
+        "image":"./nv1.jpg",
+        "category":"non-veg"
+
+
+
+
+    },
+    {
+        "id":3,
+        "title":"Chicken tandoori",
+        "price":240,
+        "image":"./nv2.jpg",
+        "category":"non-veg"
+
+
+
+    },
+    {
+        "id":4,
+        "title":"Chicken changezi",
+        "price":220,
+        "image":"./nv3.jpg",
+        "category":"non-veg"
+
+
+
+    },
+    {
+        "id":5,
+        "title":"Chicken Korma",
+        "price":220,
+        "image":"./nv4.jpg",
+        "category":"non-veg"
+
+
+
+    },
+    {
+        "id":6,
+        "title":"Chicken Chilly",
+        "price":220,
+        "image":"./nv5.jpg",
+        "category":"non-veg"
+
+
+
+    },
+    {
+        "id":7,
+        "title":"Shahi Dal",
+        "price":220,
+        "image":"./veg1.jpg",
+        "category":"veg"
+
+
+
+    },
+    {
+        "id":8,
+        "title":"Veg Pulao",
+        "price":220,
+        "image":"./veg2.jpg",
+        "category":"veg"
+
+
+
+
+    },
+    {
+        "id":9,
+        "title":"Dal Makhni",
+        "price":80,
+        "image":"./veg3.jpg",
+        "category":"veg"
+
+
+
+    },
+    {
+        "id":10,
+        "title":"Veg Biryani",
+        "price":100,
+        "image":"./veg4.jpg",
+        "category":"veg"
+
+
+
+    },
+    {
+        "id":11,
+        "title":"Shahi Paneer",
+        "price":120,
+        "image":"./veg5.jpg",
+        "category":"veg"
+
+
+
+    },
+    {
+        "id":12,
+        "title":"Momos",
+        "price":60,
+        "image":"./c1.jpg",
+        "category":"chinese"
+
+
+
+    },
+    {
+        "id":13,
+        "title":"Chicken Chilly",
+        "price":90,
+        "image":"./c2.jpg",
+        "category":"chinese"
+
+
+    },
+    {
+        "id":14,
+        "title":"Chowmin",
+        "price":40,
+        "image":"./c3.jpg",
+        "category":"chinese"
+
+
+    },
+    {
+        "id":15,
+        "title":"Gulab Jamun",
+        "price":30,
+        "image":"./d1.jpg",
+        "category":"dessert"
+
+
+
+    },
+    {
+        "id":16,
+        "title":"Cake",
+        "price":40,
+        "image":"./d2.jpg",
+        "category":"dessert"
+
+
+    },
+    {
+        "id":17,
+        "title":"Kheer",
+        "price":50,
+        "image":"./d3.jpg",
+        "category":"dessert"
+
+
+    },
+    {
+        "id":18,
+        "title":"Malai Cake",
+        "price":40,
+        "image":"./d4.jpg",
+        "category":"dessert"
+
+
+    },
+    {
+        "id":19,
+        "title":"Ice Cream",
+        "price":30,
+        "image":"./d5.jpg",
+        "category":"dessert"
+
+
+
+    },
+    {
+        "id":20,
+        "title":"Rasmalai",
+        "price":30,
+        "image":"./d6.jpg",
+        "category":"dessert"
+
+
+
+    }
+    
+    
+]

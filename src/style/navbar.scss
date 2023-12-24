@@ -1,0 +1,129 @@
+@import './color.scss';
+
+.Navbar {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(20, 1, 1);
+  box-shadow: 0px 35px 30px -25px rgb(0, 0, 0);
+ 
+
+  >.logo {
+    padding: 20px;
+
+    >img {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 200px;
+      height: 200px;
+      margin-top: 30px;
+      margin-left: 20px;
+      background: transparent;
+    }
+  }
+
+  >.navLinks {
+    width: 20%;
+    height: 18vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    >#home {
+
+      font-size: 25px;
+      font-weight: 700;
+      font-family: $font1;
+      text-decoration: none;
+      color: white;
+      margin-right: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      height: 7vh;
+      border-radius: 10px;
+      transition: all .1s;
+      position: relative;
+
+      &:hover {
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        transform: scale(1.05);
+        background-color: rgb(226, 203, 203);
+        box-shadow: 5px 5px 10px -5px rgb(143, 137, 137);
+
+      }
+    }
+      >.nav-login{
+        font-size: 25px;
+        font-weight: 700;
+        font-family: $font1;
+        text-decoration: none;
+        color: white;
+        margin-right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 7vh;
+        border-radius: 10px;
+        transition: all .1s;
+        position: relative;
+  
+        &:hover {
+          color: rgb(0, 0, 0);
+          cursor: pointer;
+          transform: scale(1.05);
+          background-color: rgb(226, 203, 203);
+          box-shadow: 5px 5px 10px -5px rgb(143, 137, 137);
+  
+        }
+
+      }
+
+    .cartLogoclass {
+      width: 30%;
+      height: 10vh;
+      display: grid;
+      align-content: center;
+      background: transparent;
+      margin-bottom: 40px;
+      position: relative;
+
+      &:hover {
+        color: rgb(12, 12, 12);
+        cursor: pointer;
+        transform: scale(1.05);
+
+      }
+
+      >.orderNumber {
+        font-family: $font1;
+        font-weight: 900;
+        font-size: 25px;
+        z-index: 10;
+        margin-top: 10px;
+        margin-left: 45px;
+        color: rgb(51, 255, 0);
+        position: absolute;
+      }
+
+      >.cartlogo {
+        width: 80%;
+        height: 15vh;
+        padding: 5px;
+        z-index: 7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        color: whitesmoke
+      }
+    }
+  }
+}

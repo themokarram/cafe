@@ -1,0 +1,62 @@
+.pay-container{
+    width: 100%;
+   
+    background-color: rgb(85, 81, 81);
+    >.pay-box{
+       
+        padding: 3rem;
+        background-color: whitesmoke;
+
+        >.pay-cart{
+           display: flex;
+            justify-content: flex-start;
+            align-items: center;
+           
+            >div{
+                margin: 10px;
+                background-color: white;
+                padding: 1rem;
+                font-weight: 20px;
+                box-shadow: 1px 1px 1px 1px rgb(170, 167, 167);
+                border-radius: 10px;
+            }
+            
+        }
+        >div >h4{
+            background-color: rgb(66, 122, 243);
+           padding: 1rem;
+           font-weight: 800;
+           font-size: larger;
+        }
+        >.pay-input{
+            display: flex;
+            flex-direction: column;
+            >h3{
+                font-weight: 800;
+                font-size: larger;
+            }
+
+            >form{
+                display: flex;
+                flex-direction: column;
+                >button{
+                    padding:10px;
+                    background-color:rgb(66, 122, 243) ;
+                    font-size: 20px;
+                    font-weight: 800;
+                    border: none;
+                    text-align: start;
+                    margin-top: 20px;
+                    
+                    &:hover{
+                        cursor: pointer;
+                        background-color:rgb(15, 57, 146) ;
+                        color: white;
+
+                    }
+                }
+            }
+        }
+
+    }
+}

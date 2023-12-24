@@ -1,0 +1,93 @@
+.cartHome{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr ;
+    background-color: whitesmoke;
+    >main{
+       width: 100%;
+      
+    }
+    >aside{
+       
+        height: 360px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        padding: 4rem;
+        margin: 20px;
+        border-radius: 10px;
+        background-color: white;
+        border: none;
+       // overflow: hidden;
+        box-shadow: 1px 1px 1px 1px rgb(192, 188, 188);
+        >h4{
+           
+            color: rgb(58, 57, 57);
+            letter-spacing: 1px;
+            padding: 10px;
+            margin: 0px;
+           }
+        >h3{
+        border-top: 1px solid rgb(124, 120, 120);
+        padding: 1rem;
+           }
+           >button{
+            font-weight: 900;
+            background-color: pink;
+            border: none;
+            padding: 10px;
+            box-shadow: 1px 1px 1px 1px rgb(221, 147, 147);
+            transition: all .2s;
+           
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.1);
+                
+            }
+           }
+    }
+}
+.cartItem{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    height: 35vh;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px 1px rgb(192, 188, 188);
+    >img{
+        margin: 5px;
+        width: 30%;
+    }
+    >.button{
+        display: flex;
+        justify-content: space-evenly;
+        //background-color: rgb(85, 77, 77);
+        width: 40%;
+        >button{
+            background: transparent;
+            
+            font-weight: 600;
+            font-size: 40px;
+            border-radius: 20%;
+            border: none;
+            &:hover{
+             cursor: pointer;
+             box-shadow: 1px 1px 1px 1px rgb(192, 188, 188);
+            }
+         }
+    }
+    
+    
+    >h4{
+        font-weight: 600;
+       font-size: 20px;
+    }
+}
