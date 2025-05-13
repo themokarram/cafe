@@ -15,7 +15,12 @@ require("./config/passport");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://cafe-one-sigma.vercel.app", // allow frontend
+    credentials: true, // if using cookies/auth
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
