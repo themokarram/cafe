@@ -246,7 +246,10 @@ const Address = () => {
 
   return (
     <div className="address-container">
-      <div className="address-box">
+      <div
+        className="address-box"
+        style={{ marginBottom: "5rem", marginTop: "5rem" }}
+      >
         <div className="address-header">
           <h2>Delivery Address</h2>
           <p>Please select or add a delivery address</p>
