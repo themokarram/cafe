@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import "../style/home.scss";
 import vid from "../assets/vid3.mp4";
+import poster from "../assets/frame_1.jpg";
 import data from "./data.json";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -53,7 +54,15 @@ const Home = () => {
   return (
     <>
       <div className="home">
-        <video autoPlay loop muted className="vid">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="vid"
+          poster={poster}
+        >
           <source src={vid} type="video/mp4" />
         </video>
       </div>

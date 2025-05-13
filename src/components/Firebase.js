@@ -1,16 +1,19 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBWE50HwDkD2b0zrt30S7EeRMfa10038n4",
-  authDomain: "tandoori-cafe.firebaseapp.com",
-  projectId: "tandoori-cafe",
-  storageBucket: "tandoori-cafe.appspot.com",
-  messagingSenderId: "373797896097",
-  appId: "1:373797896097:web:9012fade31e3dccc7515e0",
+  apiKey: "AIzaSyB7D6dkG4Og6TvU1z-kwcMQFvP_9AEuc0g",
+  authDomain: "tandoori-cafe-17023.firebaseapp.com",
+  projectId: "tandoori-cafe-17023",
+  storageBucket: "tandoori-cafe-17023.firebasestorage.app",
+  messagingSenderId: "849583161304",
+  appId: "1:849583161304:web:ac2379e7e4f8c6fdadfcad",
+  measurementId: "G-WBQ3H1NV4P",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-export { auth };
+const analytics = getAnalytics(app);
+export const auth = getAuth(app);

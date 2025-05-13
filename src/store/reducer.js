@@ -13,11 +13,6 @@ export const cartReducer = createReducer(
     user: null,
   },
   {
-    // AllData: (state) => {
-    //   const data = state.payload;
-    //   state.Allitems.push(data);
-    // },
-
     addToCart: (state, action) => {
       const items = action.payload;
       const isItemExist = state.cart.find((i) => i.id === items.id);
@@ -58,6 +53,9 @@ export const cartReducer = createReducer(
       let total = 0;
       state.cart.forEach((i) => (total += i.qty));
       state.quantity = total;
+    },
+    clearCart: (state) => {
+      state.cart = [];
     },
 
     Login: (state, action) => {

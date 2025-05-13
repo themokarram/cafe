@@ -4,8 +4,6 @@ import "../style/filter.scss";
 import data from "./data.json";
 
 const Filter = (props) => {
-  //const {cart} =useSelector((state)=>state.mainCart)
-  console.log("data", data);
 
   return (
     <div className="container">

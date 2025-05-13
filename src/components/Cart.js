@@ -3,27 +3,37 @@ import { useSelector, useDispatch } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { toast } from "react-hot-toast";
 import "../style/cart.scss";
-//import { auth } from "./Firebase";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Cart = () => {
-  const user = useSelector((state) => state.mainCart);
-
+  const { user } = useAuth();
   const navigate = useNavigate();
-
-  const handleOrder = () => {
-    if (user) {
-      navigate("/cart/address");
-    } else {
-      navigate("/login");
-    }
-  };
-
+  const dispatch = useDispatch();
   const { cart, subtotal, gst, delivery, total, discount } = useSelector(
     (state) => state.mainCart
   );
 
-  const dispatch = useDispatch();
+  const handleOrder = () => {
+    if (!user) {
+      toast.error("Please sign in to place your order");
+      // Store the current cart state in localStorage
+      localStorage.setItem(
+        "cartState",
+        JSON.stringify({
+          cart,
+          subtotal,
+          gst,
+          delivery,
+          total,
+          discount,
+        })
+      );
+      navigate("/login", { state: { from: "cart" } });
+      return;
+    }
+    navigate("/cart/address");
+  };
 
   const increment = (id) => {
     dispatch({
@@ -59,32 +69,21 @@ const Cart = () => {
     <div className="cartHome">
       <main className="cart">
         {cart.length > 0 ? (
-          cart.map((i) => {
-            console.log(i);
-            return (
-              <CartItem
-                key={i.id}
-                id={i.id}
-                image={i.image}
-                title={i.title}
-                qty={i.qty}
-                price={i.price}
-                increment={increment}
-                decrement={decrement}
-                deletehandler={deletehandler}
-              />
-            );
-          })
+          cart.map((i) => (
+            <CartItem
+              key={i.id}
+              id={i.id}
+              image={i.image}
+              title={i.title}
+              qty={i.qty}
+              price={i.price}
+              increment={increment}
+              decrement={decrement}
+              deletehandler={deletehandler}
+            />
+          ))
         ) : (
-          <div
-            style={{
-              width: "100%",
-              height: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-            }}
-          >
+          <div className="empty-cart">
             <h1>No Items added yet..</h1>
           </div>
         )}
@@ -101,7 +100,9 @@ const Cart = () => {
           <h4>GST:&nbsp;&nbsp;--------------&nbsp;&nbsp;&#8377;&nbsp;{gst}</h4>
           <h3>Total Amount:&nbsp;---&nbsp;&#8377;&nbsp;{total}</h3>
 
-          <button onClick={handleOrder}>PLACE ORDER</button>
+          <button onClick={handleOrder} className="place-order-btn">
+            {user ? "PLACE ORDER" : "SIGN IN TO ORDER"}
+          </button>
         </aside>
       ) : (
         " "
@@ -130,8 +131,7 @@ const CartItem = ({
       <button onClick={() => increment(id)}>+</button>
       <h4>Rs.{price}/plate</h4>
       <button onClick={() => deletehandler(id)}>
-        {" "}
-        <MdDeleteForever />{" "}
+        <MdDeleteForever />
       </button>
     </div>
   </div>
