@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "process.env.REACT_APP_SERVER_API/api/users/profile",
+        `${process.env.REACT_APP_SERVER_API}/api/users/profile`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post(
-        "process.env.REACT_APP_SERVER_API/api/auth/signin",
+        `${process.env.REACT_APP_SERVER_API}/api/auth/signin`,
         {
           email,
           password,
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       const response = await axios.post(
-        "process.env.REACT_APP_SERVER_API/api/auth/signup",
+        `${process.env.REACT_APP_SERVER_API}/api/auth/signup`,
         userData
       );
       const { token, user } = response.data;
@@ -76,22 +76,21 @@ export const AuthProvider = ({ children }) => {
 
   const googleSignIn = async () => {
     try {
-      // Open Google OAuth popup
       const width = 500;
       const height = 600;
       const left = window.screenX + (window.outerWidth - width) / 2;
       const top = window.screenY + (window.outerHeight - height) / 2;
 
       const popup = window.open(
-        "process.env.REACT_APP_SERVER_API/api/auth/google",
+        `${process.env.REACT_APP_SERVER_API}/api/auth/google`,
         "Google Sign In",
         `width=${width},height=${height},left=${left},top=${top}`
       );
 
-      // Listen for the OAuth response
       return new Promise((resolve, reject) => {
         window.addEventListener("message", async (event) => {
-          if (event.origin === "process.env.REACT_APP_SERVER_API") {
+          console.log("event.origin", event.origin);
+          if (event.origin === process.env.REACT_APP_SERVER_API) {
             popup.close();
             const { token, user } = event.data;
             if (token) {

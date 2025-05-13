@@ -41,15 +41,14 @@ const Login = () => {
           isLogin ? "Login successful!" : "Account created successfully!"
         );
 
-        // Check if there's a saved cart state
         const savedCartState = localStorage.getItem("cartState");
         if (savedCartState) {
-          localStorage.removeItem("cartState"); // Clear the saved state
-          navigate("/cart"); // Return to cart
+          localStorage.removeItem("cartState");
+          navigate("/cart");
         } else if (location.state?.from === "cart") {
-          navigate("/cart"); // Return to cart if coming from there
+          navigate("/cart");
         } else {
-          navigate("/"); // Default redirect to home
+          navigate("/");
         }
       } else {
         toast.error(result.message);
@@ -67,15 +66,14 @@ const Login = () => {
       if (result.success) {
         toast.success("Google sign-in successful!");
 
-        // Check if there's a saved cart state
         const savedCartState = localStorage.getItem("cartState");
         if (savedCartState) {
-          localStorage.removeItem("cartState"); // Clear the saved state
-          navigate("/cart"); // Return to cart
+          localStorage.removeItem("cartState");
+          navigate("/cart");
         } else if (location.state?.from === "cart") {
-          navigate("/cart"); // Return to cart if coming from there
+          navigate("/cart");
         } else {
-          navigate("/"); // Default redirect to home
+          navigate("/");
         }
       } else {
         toast.error(result.message);

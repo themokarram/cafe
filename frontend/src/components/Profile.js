@@ -16,12 +16,7 @@ const Profile = () => {
   const [editingAddress, setEditingAddress] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const generateItemId = (itemId) => {
-    const randomNum = Math.floor(Math.random() * 1000000000000)
-      .toString()
-      .padStart(12, "0");
-    return `${itemId}-${randomNum}`;
-  };
+  
 
   useEffect(() => {
     if (user) {
@@ -33,7 +28,7 @@ const Profile = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get(
-        "process.env.REACT_APP_SERVER_API/api/addresses",
+        `${process.env.REACT_APP_SERVER_API}/api/addresses`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -49,7 +44,7 @@ const Profile = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        "process.env.REACT_APP_SERVER_API/api/orders",
+        `${process.env.REACT_APP_SERVER_API}/api/orders`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -83,7 +78,7 @@ const Profile = () => {
 
       if (isEditing && editingAddress) {
         await axios.put(
-          `process.env.REACT_APP_SERVER_API/api/addresses/${editingAddress._id}`,
+          `${process.env.REACT_APP_SERVER_API}/api/addresses/${editingAddress._id}`,
           addressData,
           {
             headers: {
@@ -94,7 +89,7 @@ const Profile = () => {
         toast.success("Address updated successfully");
       } else {
         await axios.post(
-          "process.env.REACT_APP_SERVER_API/api/addresses",
+          `${process.env.REACT_APP_SERVER_API}/api/addresses`,
           addressData,
           {
             headers: {
@@ -136,7 +131,7 @@ const Profile = () => {
   const handleSetDefault = async (addressId) => {
     try {
       await axios.patch(
-        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}/set-default`,
+        `${process.env.REACT_APP_SERVER_API}/api/addresses/${addressId}/set-default`,
         {},
         {
           headers: {
@@ -154,7 +149,7 @@ const Profile = () => {
   const handleDelete = async (addressId) => {
     try {
       await axios.delete(
-        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}`,
+        `${process.env.REACT_APP_SERVER_API}/api/addresses/${addressId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -473,7 +468,7 @@ const Profile = () => {
 
                     <div className="order-items">
                       {order.items.map((item, index) => (
-                        <div key={generateItemId(item.id)} className="item">
+                        <div key={item.id} className="item">
                           <span>
                             {item.quantity}x {item.menuItem}
                           </span>

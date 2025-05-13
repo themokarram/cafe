@@ -51,7 +51,7 @@ const Address = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get(
-        "process.env.REACT_APP_SERVER_API/api/addresses",
+        `${process.env.REACT_APP_SERVER_API}/api/addresses`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -96,7 +96,7 @@ const Address = () => {
       try {
         if (isEditing && editingAddress) {
           await axios.put(
-            `process.env.REACT_APP_SERVER_API/api/addresses/${editingAddress._id}`,
+            `${process.env.REACT_APP_SERVER_API}/api/addresses/${editingAddress._id}`,
             values,
             {
               headers: {
@@ -107,7 +107,7 @@ const Address = () => {
           toast.success("Address updated successfully");
         } else {
           await axios.post(
-            "process.env.REACT_APP_SERVER_API/api/addresses",
+            `${process.env.REACT_APP_SERVER_API}/api/addresses`,
             values,
             {
               headers: {
@@ -166,7 +166,7 @@ const Address = () => {
   const handleSetDefault = async (addressId) => {
     try {
       await axios.patch(
-        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}/set-default`,
+        `${process.env.REACT_APP_SERVER_API}/api/addresses/${addressId}/set-default`,
         {},
         {
           headers: {
@@ -184,7 +184,7 @@ const Address = () => {
   const handleDelete = async (addressId) => {
     try {
       await axios.delete(
-        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}`,
+       `${process.env.REACT_APP_SERVER_API}/api/addresses/${addressId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

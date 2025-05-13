@@ -90,10 +90,31 @@ router.get(
 
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", {
+    failureRedirect: "/login",
+    session: false,
+  }),
   (req, res) => {
-    const token = generateToken(req.user);
-    res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`);
+    try {
+      const token = generateToken(req.user);
+      const user = req.user;
+
+      const script = `
+        <script>
+          window.opener.postMessage(${JSON.stringify({
+            token,
+            user,
+          })}, "http://localhost:3000");
+          window.close();
+        </script>
+      `;
+      res.send(script);
+    } catch (error) {
+      console.error("OAuth callback error:", error);
+      res
+        .status(500)
+        .json({ message: "Something went wrong!", error: error.message });
+    }
   }
 );
 

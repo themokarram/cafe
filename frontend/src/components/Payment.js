@@ -63,7 +63,7 @@ const Payment = ({ cartItems, totalAmount, deliveryAddress, onBack }) => {
       // For Cash on Delivery - create order directly
       if (paymentMethod === "cod") {
         const orderResponse = await axios.post(
-          "process.env.REACT_APP_SERVER_API/api/orders/create",
+          `${process.env.REACT_APP_SERVER_API}/api/orders/create`,
           {
             items: formattedItems,
             totalAmount,
@@ -86,7 +86,7 @@ const Payment = ({ cartItems, totalAmount, deliveryAddress, onBack }) => {
 
       // For Razorpay payments - create payment intent first
       const paymentIntentResponse = await axios.post(
-        "process.env.REACT_APP_SERVER_API/api/payments/create-intent",
+        `${process.env.REACT_APP_SERVER_API}/api/payments/create-intent`,
         {
           amount: totalAmount,
           currency: "INR",
@@ -127,7 +127,7 @@ const Payment = ({ cartItems, totalAmount, deliveryAddress, onBack }) => {
           try {
             // Create order after successful payment
             await axios.post(
-              "process.env.REACT_APP_SERVER_API/api/orders/create",
+              `${process.env.REACT_APP_SERVER_API}/api/orders/create`,
               {
                 items: formattedItems,
                 totalAmount,
