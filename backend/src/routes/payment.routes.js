@@ -24,7 +24,6 @@ router.post(
   async (req, res) => {
     try {
       const { orderId, paymentMethod, paymentDetails } = req.body;
-      console.log("=========pay", req.body);
       const order = await Order.findOne({
         _id: orderId,
         user: req.user.id,
@@ -47,9 +46,9 @@ router.post(
         });
       }
 
-      // Card/UPI (Razorpay)
+      
       const razorpayOrder = await razorpay.orders.create({
-        amount: order.totalAmount * 100, // Convert to paise
+        amount: order.totalAmount * 100, 
         currency: "INR",
         receipt: orderId.toString(),
       });
@@ -145,13 +144,11 @@ router.get("/status/:orderId", isAuthenticated, async (req, res) => {
   }
 });
 
-// Add a stub for UPI verification (simulate success)
+
 router.post("/verify-upi", isAuthenticated, async (req, res) => {
   try {
     const { paymentIntentId, upiId } = req.body;
-    // Simulate UPI verification
-    // In real-world, integrate with UPI gateway
-    // For now, mark payment as completed
+
     const order = await Order.findOneAndUpdate(
       { razorpayOrderId: paymentIntentId, user: req.user.id },
       { paymentStatus: "completed", paymentDetails: { upiId } },
@@ -172,13 +169,13 @@ router.post("/verify-upi", isAuthenticated, async (req, res) => {
   }
 });
 
-// payments.route.js
+
 router.post("/create-intent", isAuthenticated, async (req, res) => {
   try {
     const { amount, currency } = req.body;
 
     const razorpayOrder = await razorpay.orders.create({
-      amount: amount * 100, // Convert to paise
+      amount: amount * 100, 
       currency: currency || "INR",
     });
 

@@ -32,11 +32,14 @@ const Profile = () => {
 
   const fetchAddresses = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/addresses", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "process.env.REACT_APP_SERVER_API/api/addresses",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       setAddresses(response.data.addresses);
     } catch (error) {
       toast.error("Failed to fetch addresses");
@@ -45,11 +48,14 @@ const Profile = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/orders", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "process.env.REACT_APP_SERVER_API/api/orders",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       console.log("response.data", response.data);
       if (response.status === 200) {
         setOrders(response.data.orders || response.data);
@@ -77,7 +83,7 @@ const Profile = () => {
 
       if (isEditing && editingAddress) {
         await axios.put(
-          `http://localhost:5000/api/addresses/${editingAddress._id}`,
+          `process.env.REACT_APP_SERVER_API/api/addresses/${editingAddress._id}`,
           addressData,
           {
             headers: {
@@ -87,11 +93,15 @@ const Profile = () => {
         );
         toast.success("Address updated successfully");
       } else {
-        await axios.post("http://localhost:5000/api/addresses", addressData, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        await axios.post(
+          "process.env.REACT_APP_SERVER_API/api/addresses",
+          addressData,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         toast.success("Address added successfully");
       }
       await fetchAddresses();
@@ -126,7 +136,7 @@ const Profile = () => {
   const handleSetDefault = async (addressId) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/addresses/${addressId}/set-default`,
+        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}/set-default`,
         {},
         {
           headers: {
@@ -143,11 +153,14 @@ const Profile = () => {
 
   const handleDelete = async (addressId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/addresses/${addressId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await axios.delete(
+        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       await fetchAddresses();
       toast.success("Address deleted successfully");
     } catch (error) {

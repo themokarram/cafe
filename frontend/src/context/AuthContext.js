@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/api/users/profile",
+        "process.env.REACT_APP_SERVER_API/api/users/profile",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signin",
+        "process.env.REACT_APP_SERVER_API/api/auth/signin",
         {
           email,
           password,
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "process.env.REACT_APP_SERVER_API/api/auth/signup",
         userData
       );
       const { token, user } = response.data;
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }) => {
       const top = window.screenY + (window.outerHeight - height) / 2;
 
       const popup = window.open(
-        "http://localhost:5000/api/auth/google",
+        "process.env.REACT_APP_SERVER_API/api/auth/google",
         "Google Sign In",
         `width=${width},height=${height},left=${left},top=${top}`
       );
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
       // Listen for the OAuth response
       return new Promise((resolve, reject) => {
         window.addEventListener("message", async (event) => {
-          if (event.origin === "http://localhost:5000") {
+          if (event.origin === "process.env.REACT_APP_SERVER_API") {
             popup.close();
             const { token, user } = event.data;
             if (token) {

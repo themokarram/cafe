@@ -50,11 +50,14 @@ const Address = () => {
 
   const fetchAddresses = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/addresses", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "process.env.REACT_APP_SERVER_API/api/addresses",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       setAddresses(response.data.addresses);
       const defaultAddress = response.data.addresses.find(
         (addr) => addr.isDefault
@@ -93,7 +96,7 @@ const Address = () => {
       try {
         if (isEditing && editingAddress) {
           await axios.put(
-            `http://localhost:5000/api/addresses/${editingAddress._id}`,
+            `process.env.REACT_APP_SERVER_API/api/addresses/${editingAddress._id}`,
             values,
             {
               headers: {
@@ -103,11 +106,15 @@ const Address = () => {
           );
           toast.success("Address updated successfully");
         } else {
-          await axios.post("http://localhost:5000/api/addresses", values, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          });
+          await axios.post(
+            "process.env.REACT_APP_SERVER_API/api/addresses",
+            values,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
           toast.success("Address added successfully");
         }
         setShowPayment(true);
@@ -159,7 +166,7 @@ const Address = () => {
   const handleSetDefault = async (addressId) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/addresses/${addressId}/set-default`,
+        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}/set-default`,
         {},
         {
           headers: {
@@ -176,11 +183,14 @@ const Address = () => {
 
   const handleDelete = async (addressId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/addresses/${addressId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await axios.delete(
+        `process.env.REACT_APP_SERVER_API/api/addresses/${addressId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       await fetchAddresses();
       toast.success("Address deleted successfully");
     } catch (error) {
